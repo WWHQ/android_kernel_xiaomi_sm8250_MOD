@@ -1276,7 +1276,8 @@ extern void susfs_spoof_uname(struct new_utsname* tmp);
 		if (static_branch_likely(&susfs_is_uname_spoof_buffer_set))
 			susfs_spoof_uname(&tmp);
 #endif
-	if (current_uid().val == 0) {
+			
+	/*if (current_uid().val == 0) {
 		if (!strncmp(current->comm, "bpfloader", 9) ||
 			!strncmp(current->comm, "netbpfload", 10) ||
 			!strncmp(current->comm, "netd", 4) ||
@@ -1285,7 +1286,8 @@ extern void susfs_spoof_uname(struct new_utsname* tmp);
 			pr_info("fake uname: %s/%d release=%s\n",
 				current->comm, current->pid, tmp.release);
 		}
-	}
+	}*//-去除detecting kernel uname spoofing.*/
+			
 	up_read(&uts_sem);
 	if (copy_to_user(name, &tmp, sizeof(tmp)))
 		return -EFAULT;
