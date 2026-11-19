@@ -1286,7 +1286,8 @@ extern void susfs_spoof_uname(struct new_utsname* tmp);
 			pr_info("fake uname: %s/%d release=%s\n",
 				current->comm, current->pid, tmp.release);
 		}
-	}*//-去除detecting kernel uname spoofing.*/
+	}*/
+	/* 去除detecting kernel uname spoofing.*/
 			
 	up_read(&uts_sem);
 	if (copy_to_user(name, &tmp, sizeof(tmp)))
