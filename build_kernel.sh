@@ -130,6 +130,26 @@ sed -i '/^config LSM$/,/^help$/{ /^[[:space:]]*default/ { /baseband_guard/! s/se
 echo "[+] Baseband-guard setup finished."
 echo "==========================================="
 
+
+# ====================== MemKernel Integration ======================
+echo "Integrating MemKernel (Static build - Y mode)..."
+
+RANDOM_NAME="k$(head -c 8 /dev/urandom | tr -dc 'a-z0-9')"
+
+echo "Using random device name: $RANDOM_NAME"
+
+curl -LSs "https://raw.githubusercontent.com/WWHQ/MemKernel/main/kernel/setup.sh" | bash -s Y $RANDOM_NAME
+
+echo "Applying silent dynamic random name version (NO logs)..."
+
+cd drivers/memkernel || { echo "[-] drivers/memkernel not found"; exit 1; }
+
+cd ../..
+
+echo "MemKernel silent dynamic version applied."
+# =================================================================
+
+
 # ==========================================
 # AnyKernel3 Setup
 # ==========================================
