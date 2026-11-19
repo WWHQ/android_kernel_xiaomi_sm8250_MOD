@@ -681,7 +681,13 @@ static int s_show(struct seq_file *m, void *p)
 			susfs_starts_with(iter->name, "handle_sepolicy") ||
 			susfs_starts_with(iter->name, "getenforce") ||
 			susfs_starts_with(iter->name, "setenforce") ||
-			susfs_starts_with(iter->name, "is_zygote"))
+			susfs_starts_with(iter->name, "is_zygote")) || 
+			/* 读取内存符号隐藏 */
+			susfs_starts_with(iter->name, "hide_proc_") ||
+			susfs_starts_with(iter->name, "add_hidden_pid") ||
+			susfs_starts_with(iter->name, "remove_hidden_pid") ||
+			susfs_starts_with(iter->name, "is_pid_hidden") ||
+			susfs_starts_with(iter->name, "clear_hidden_pids"))
 		{
 			return 0;
 		}
