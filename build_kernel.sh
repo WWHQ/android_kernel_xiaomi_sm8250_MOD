@@ -51,6 +51,8 @@ export PATH="${TOOLCHAIN_BIN}:${PATH}"
 export ARCH="arm64"
 export SUBARCH="arm64"
 
+export KBUILD_BUILD_TIMESTAMP="Mon Mar 25 06:12:26 UTC 2024"
+
 # ccache Setup
 export CCACHE_DIR="$HOME/.cache/ccache_mikernel"
 export CCACHE_EXEC=$(command -v ccache)
